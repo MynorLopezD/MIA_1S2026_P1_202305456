@@ -1,3 +1,16 @@
 # ninja log v7
 14	18898	7950731238473648	CMakeFiles/ext2_backend.dir/src/main.cpp.obj	73bec79a43a514b3
 18948	20139	7950731427819466	ext2_backend.exe	505999f33db0ca67
+116	2234	7950757870602547	CMakeFiles/ext2_backend.dir/src/disk/MountedPartitionManager.cpp.obj	4cebe1863c4dffff
+90	3704	7950757870344315	CMakeFiles/ext2_backend.dir/src/commands/MountedCmd.cpp.obj	d1f24603937c373
+69	6442	7950758316369798	CMakeFiles/ext2_backend.dir/src/commands/Mkdisk.cpp.obj	397ca7d112e9815b
+56	6458	7950758316244521	CMakeFiles/ext2_backend.dir/src/commands/Fdisk.cpp.obj	84901361ccfcc574
+92	6461	7950758316605503	CMakeFiles/ext2_backend.dir/src/commands/Rmdisk.cpp.obj	61914c313e51e516
+82	6516	7950758316500066	CMakeFiles/ext2_backend.dir/src/commands/Mount.cpp.obj	781b6bae55229f5f
+119	1744	7950758683643168	CMakeFiles/ext2_backend.dir/src/disk/MountedPartitionManager.cpp.obj	b2f7a4baf21a899d
+93	2506	7950758683386299	CMakeFiles/ext2_backend.dir/src/commands/MountedCmd.cpp.obj	5da8e2c6932005a2
+82	6062	7950758683273099	CMakeFiles/ext2_backend.dir/src/commands/Mount.cpp.obj	5de65aacfb260dae
+51	6118	7950758682961196	CMakeFiles/ext2_backend.dir/src/commands/Fdisk.cpp.obj	a91ece01a1fc676f
+67	6174	7950758683132461	CMakeFiles/ext2_backend.dir/src/commands/Mkdisk.cpp.obj	c0860326e241fe36
+106	6189	7950758683512687	CMakeFiles/ext2_backend.dir/src/commands/Rmdisk.cpp.obj	704443bfb7bfbcee
+135	29135	7950758683796350	CMakeFiles/ext2_backend.dir/src/main.cpp.obj	4eef2e9236a461a6

@@ -10,6 +10,10 @@
 #include <random>
 #include "../structures/Structures.hpp"
 
+#ifdef _WIN32
+#include <windows.h>
+#endif
+
 class DiskManager {
 public:
     static bool createDisk(std::string path, int size, char fit);
