@@ -29,6 +29,10 @@ std::string executeCommand(Command cmd) {
 int main() {
     crow::SimpleApp app;
 
+    CROW_ROUTE(app, "/hola")([]() {
+        return "hola";
+    });
+
     CROW_ROUTE(app, "/ping")([]() {
         nlohmann::json res;
         res["status"] = "ok";
@@ -36,7 +40,7 @@ int main() {
         return res.dump();
     });
 
-    CROW_ROUTE(app, "/execute").methods("POST"_method)([](const crow::request& req) {
+    CROW_ROUTE(app, "/execute").methods(crow::HTTPMethod::POST)([](const crow::request& req) {
         nlohmann::json response;
         
         try {
@@ -50,11 +54,19 @@ int main() {
             std::string commandStr = body["command"];
             auto commands = CommandParser::parseScript(commandStr);
             
+            if (commands.empty()) {
+                response["output"] = "Error: No se pudo parsear el comando";
+                return response.dump();
+            }
+            
             std::string output;
             for (const auto& cmd : commands) {
                 if (cmd.name == "COMMENT" || cmd.name.empty()) {
                     continue;
                 }
+                //output += "DEBUG: cmd.name=" + cmd.name + " params:";
+                for (auto& p : cmd.params) output += " " + p.first + "=" + p.second;
+                //output += "\n";
                 output += executeCommand(cmd) + "\n";
             }
             
@@ -67,7 +79,11 @@ int main() {
         return response.dump();
     });
 
+    CROW_ROUTE(app, "/test")([]() {
+        return "test ok";
+    });
+
     std::cout << "Server en http://localhost:8080" << std::endl;
-    app.port(8080).multithreaded().run();
+    app.bindaddr("0.0.0.0").port(8080).multithreaded().run();
     return 0;
 }

@@ -89,6 +89,15 @@ build CMakeFiles/ext2_backend.dir/src/commands/Rmdisk.cpp.obj: CXX_COMPILER__ext
   OBJECT_FILE_DIR = CMakeFiles\ext2_backend.dir\src\commands
   TARGET_SUPPORT_DIR = CMakeFiles\ext2_backend.dir
 
+build CMakeFiles/ext2_backend.dir/src/disk/DiskManager.cpp.obj: CXX_COMPILER__ext2_backend_unscanned_ C$:/Users/mynor/OneDrive/Desktop/USAC/SEMESTRE$ 7/ARCHIVOS/LAB/MIA_1S2026_P1_202305456/backend/src/disk/DiskManager.cpp || cmake_object_order_depends_target_ext2_backend
+  DEFINES = -DASIO_NO_DEPRECATED -DASIO_STANDALONE -DDBL_DECIMAL_DIG=17
+  DEP_FILE = CMakeFiles\ext2_backend.dir\src\disk\DiskManager.cpp.obj.d
+  FLAGS = -std=gnu++17
+  INCLUDES = -I"C:/Users/mynor/OneDrive/Desktop/USAC/SEMESTRE 7/ARCHIVOS/LAB/MIA_1S2026_P1_202305456/backend/src" -isystem C:/msys64/ucrt64/include
+  OBJECT_DIR = CMakeFiles\ext2_backend.dir
+  OBJECT_FILE_DIR = CMakeFiles\ext2_backend.dir\src\disk
+  TARGET_SUPPORT_DIR = CMakeFiles\ext2_backend.dir
+
 build CMakeFiles/ext2_backend.dir/src/disk/MountedPartitionManager.cpp.obj: CXX_COMPILER__ext2_backend_unscanned_ C$:/Users/mynor/OneDrive/Desktop/USAC/SEMESTRE$ 7/ARCHIVOS/LAB/MIA_1S2026_P1_202305456/backend/src/disk/MountedPartitionManager.cpp || cmake_object_order_depends_target_ext2_backend
   DEFINES = -DASIO_NO_DEPRECATED -DASIO_STANDALONE -DDBL_DECIMAL_DIG=17
   DEP_FILE = CMakeFiles\ext2_backend.dir\src\disk\MountedPartitionManager.cpp.obj.d
@@ -107,6 +116,15 @@ build CMakeFiles/ext2_backend.dir/src/main.cpp.obj: CXX_COMPILER__ext2_backend_u
   OBJECT_FILE_DIR = CMakeFiles\ext2_backend.dir\src
   TARGET_SUPPORT_DIR = CMakeFiles\ext2_backend.dir
 
+build CMakeFiles/ext2_backend.dir/src/utils/CommandParser.cpp.obj: CXX_COMPILER__ext2_backend_unscanned_ C$:/Users/mynor/OneDrive/Desktop/USAC/SEMESTRE$ 7/ARCHIVOS/LAB/MIA_1S2026_P1_202305456/backend/src/utils/CommandParser.cpp || cmake_object_order_depends_target_ext2_backend
+  DEFINES = -DASIO_NO_DEPRECATED -DASIO_STANDALONE -DDBL_DECIMAL_DIG=17
+  DEP_FILE = CMakeFiles\ext2_backend.dir\src\utils\CommandParser.cpp.obj.d
+  FLAGS = -std=gnu++17
+  INCLUDES = -I"C:/Users/mynor/OneDrive/Desktop/USAC/SEMESTRE 7/ARCHIVOS/LAB/MIA_1S2026_P1_202305456/backend/src" -isystem C:/msys64/ucrt64/include
+  OBJECT_DIR = CMakeFiles\ext2_backend.dir
+  OBJECT_FILE_DIR = CMakeFiles\ext2_backend.dir\src\utils
+  TARGET_SUPPORT_DIR = CMakeFiles\ext2_backend.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target ext2_backend
@@ -115,7 +133,7 @@ build CMakeFiles/ext2_backend.dir/src/main.cpp.obj: CXX_COMPILER__ext2_backend_u
 #############################################
 # Link the executable ext2_backend.exe
 
-build ext2_backend.exe: CXX_EXECUTABLE_LINKER__ext2_backend_ CMakeFiles/ext2_backend.dir/src/commands/Fdisk.cpp.obj CMakeFiles/ext2_backend.dir/src/commands/Mkdisk.cpp.obj CMakeFiles/ext2_backend.dir/src/commands/Mount.cpp.obj CMakeFiles/ext2_backend.dir/src/commands/MountedCmd.cpp.obj CMakeFiles/ext2_backend.dir/src/commands/Rmdisk.cpp.obj CMakeFiles/ext2_backend.dir/src/disk/MountedPartitionManager.cpp.obj CMakeFiles/ext2_backend.dir/src/main.cpp.obj | C$:/msys64/ucrt64/lib/libssl.dll.a C$:/msys64/ucrt64/lib/libcrypto.dll.a
+build ext2_backend.exe: CXX_EXECUTABLE_LINKER__ext2_backend_ CMakeFiles/ext2_backend.dir/src/commands/Fdisk.cpp.obj CMakeFiles/ext2_backend.dir/src/commands/Mkdisk.cpp.obj CMakeFiles/ext2_backend.dir/src/commands/Mount.cpp.obj CMakeFiles/ext2_backend.dir/src/commands/MountedCmd.cpp.obj CMakeFiles/ext2_backend.dir/src/commands/Rmdisk.cpp.obj CMakeFiles/ext2_backend.dir/src/disk/DiskManager.cpp.obj CMakeFiles/ext2_backend.dir/src/disk/MountedPartitionManager.cpp.obj CMakeFiles/ext2_backend.dir/src/main.cpp.obj CMakeFiles/ext2_backend.dir/src/utils/CommandParser.cpp.obj | C$:/msys64/ucrt64/lib/libssl.dll.a C$:/msys64/ucrt64/lib/libcrypto.dll.a
   LINK_LIBRARIES = C:/msys64/ucrt64/lib/libssl.dll.a  -lws2_32  -lwsock32  C:/msys64/ucrt64/lib/libcrypto.dll.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\ext2_backend.dir
   POST_BUILD = cd .
