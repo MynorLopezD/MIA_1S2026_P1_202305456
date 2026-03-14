@@ -24,6 +24,9 @@ public:
     static bool createPartition(std::string diskPath, int size, char type, char fit, std::string name);
     static bool deletePartition(std::string diskPath, std::string name);
     
+    static bool writeEBR(std::string path, int ebrPosition, EBR ebr);
+    static EBR readEBR(std::string path, int ebrPosition);
+    
     static int calculateStructuresCount(int partitionSize);
     
 private:

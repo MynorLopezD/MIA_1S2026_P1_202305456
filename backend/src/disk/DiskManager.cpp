@@ -99,6 +99,37 @@ bool DiskManager::writeMBR(std::string path, MBR mbr) {
     return true;
 }
 
+EBR DiskManager::readEBR(std::string path, int ebrPosition) {
+    EBR ebr;
+    std::ifstream disk(path, std::ios::binary | std::ios::in);
+    
+    if (!disk.is_open()) {
+        std::cerr << "Error: No se pudo abrir el disco para leer EBR" << std::endl;
+        return ebr;
+    }
+    
+    disk.seekg(ebrPosition, std::ios::beg);
+    disk.read(reinterpret_cast<char*>(&ebr), sizeof(EBR));
+    disk.close();
+    
+    return ebr;
+}
+
+bool DiskManager::writeEBR(std::string path, int ebrPosition, EBR ebr) {
+    std::fstream disk(path, std::ios::binary | std::ios::in | std::ios::out);
+    
+    if (!disk.is_open()) {
+        std::cerr << "Error: No se pudo abrir el disco para escribir EBR" << std::endl;
+        return false;
+    }
+    
+    disk.seekp(ebrPosition, std::ios::beg);
+    disk.write(reinterpret_cast<const char*>(&ebr), sizeof(EBR));
+    disk.close();
+    
+    return true;
+}
+
 bool DiskManager::createPartition(std::string diskPath, int size, char type, char fit, std::string name) {
     MBR mbr = readMBR(diskPath);
     
@@ -161,7 +192,25 @@ bool DiskManager::createPartition(std::string diskPath, int size, char type, cha
     
     strncpy(mbr.mbr_partitions[partitionIndex].part_name, name.c_str(), PARTITION_NAME_SIZE - 1);
     
-    return writeMBR(diskPath, mbr);
+    if (!writeMBR(diskPath, mbr)) {
+        return false;
+    }
+    
+    if (type == 'E') {
+        EBR ebr;
+        ebr.part_fit = fit;
+        ebr.part_start = startByte + sizeof(EBR);
+        ebr.part_s = size - sizeof(EBR);
+        ebr.part_next = -1;
+        ebr.part_mount = '0';
+        memset(ebr.part_name, 0, PARTITION_NAME_SIZE);
+        
+        if (!writeEBR(diskPath, startByte, ebr)) {
+            return false;
+        }
+    }
+    
+    return true;
 }
 
 bool DiskManager::deletePartition(std::string diskPath, std::string name) {
