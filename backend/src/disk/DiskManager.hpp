@@ -27,6 +27,11 @@ public:
     static bool writeEBR(std::string path, int ebrPosition, EBR ebr);
     static EBR readEBR(std::string path, int ebrPosition);
     
+    static bool writeSuperBloque(std::string path, int position, SuperBloque sb);
+    static bool writeBitmap(std::string path, int position, std::vector<char> bitmap);
+    static bool writeInode(std::string path, int inodeTableStart, int inodeIndex, Inode inode);
+    static bool writeBlock(std::string path, int blockStart, int blockIndex, void* block, int blockSize);
+    
     static int calculateStructuresCount(int partitionSize);
     
 private:

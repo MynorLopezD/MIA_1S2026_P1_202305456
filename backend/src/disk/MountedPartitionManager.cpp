@@ -17,6 +17,15 @@ MountedPartition* MountedPartitionManager::findById(std::string id) {
     return nullptr;
 }
 
+MountedPartition* MountedPartitionManager::getPartitionById(std::string id) {
+    for (auto& mp : mountedPartitions) {
+        if (mp.id == id) {
+            return &mp;
+        }
+    }
+    return nullptr;
+}
+
 MountedPartition* MountedPartitionManager::findByPathAndName(std::string path, std::string name) {
     for (auto& mp : mountedPartitions) {
         if (mp.path == path && mp.name == name) {

@@ -3,6 +3,7 @@
 #include <iostream>
 #include "utils/CommandParser.hpp"
 #include "commands/Mkdisk.hpp"
+#include "commands/Mkfs.hpp"
 #include "commands/Rmdisk.hpp"
 #include "commands/Fdisk.hpp"
 #include "commands/Mount.hpp"
@@ -21,6 +22,8 @@ std::string executeCommand(Command cmd) {
         return Mount::execute(cmd);
     } else if (name == "MOUNTED") {
         return MountedCmd::execute(cmd);
+    } else if (name == "MKFS") {
+        return Mkfs::execute(cmd);
     } else {
         return "Error: Comando no reconocido: " + name;
     }

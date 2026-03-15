@@ -275,3 +275,65 @@ bool DiskManager::createDirectoryIfNotExists(std::string path) {
     return mkdir(path.c_str(), 0755) == 0;
     #endif
 }
+
+bool DiskManager::writeSuperBloque(std::string path, int position, SuperBloque sb) {
+    std::fstream disk(path, std::ios::binary | std::ios::in | std::ios::out);
+    
+    if (!disk.is_open()) {
+        std::cerr << "Error: No se pudo abrir el disco para escribir superbloque" << std::endl;
+        return false;
+    }
+    
+    disk.seekp(position, std::ios::beg);
+    disk.write(reinterpret_cast<const char*>(&sb), sizeof(SuperBloque));
+    disk.close();
+    
+    return true;
+}
+
+bool DiskManager::writeBitmap(std::string path, int position, std::vector<char> bitmap) {
+    std::fstream disk(path, std::ios::binary | std::ios::in | std::ios::out);
+    
+    if (!disk.is_open()) {
+        std::cerr << "Error: No se pudo abrir el disco para escribir bitmap" << std::endl;
+        return false;
+    }
+    
+    disk.seekp(position, std::ios::beg);
+    disk.write(bitmap.data(), bitmap.size());
+    disk.close();
+    
+    return true;
+}
+
+bool DiskManager::writeInode(std::string path, int inodeTableStart, int inodeIndex, Inode inode) {
+    std::fstream disk(path, std::ios::binary | std::ios::in | std::ios::out);
+    
+    if (!disk.is_open()) {
+        std::cerr << "Error: No se pudo abrir el disco para escribir inodo" << std::endl;
+        return false;
+    }
+    
+    int inodePosition = inodeTableStart + inodeIndex * sizeof(Inode);
+    disk.seekp(inodePosition, std::ios::beg);
+    disk.write(reinterpret_cast<const char*>(&inode), sizeof(Inode));
+    disk.close();
+    
+    return true;
+}
+
+bool DiskManager::writeBlock(std::string path, int blockStart, int blockIndex, void* block, int blockSize) {
+    std::fstream disk(path, std::ios::binary | std::ios::in | std::ios::out);
+    
+    if (!disk.is_open()) {
+        std::cerr << "Error: No se pudo abrir el disco para escribir bloque" << std::endl;
+        return false;
+    }
+    
+    int blockPosition = blockStart + blockIndex * blockSize;
+    disk.seekp(blockPosition, std::ios::beg);
+    disk.write(reinterpret_cast<const char*>(block), blockSize);
+    disk.close();
+    
+    return true;
+}
